@@ -1,21 +1,12 @@
 import math
 
 
-def prime_factors(n: int) -> dict:
+def prime_factors(n: int, prime_lst: list) -> dict:
     res = {}
-    while n % 2 == 0:
-        res[2] = res[2] + 1 if 2 in res else 1
-        n //= 2
-    i = 3
-    while i <= math.ceil(math.sqrt(n)):
-        if n % i == 0:
-            while n % i == 0:
-                res[i] = res[i] + 1 if i in res else 1
-                n //= i
-            i = 3
-        else:
-            i += 2
-    res[n] = res[n] + 1 if n in res else 1
+    for prime in prime_lst:
+        while n % prime == 0:
+            res[prime] = res[prime] + 1 if prime in res else 1
+            n //= prime
     return res
 
 
@@ -27,6 +18,15 @@ def sieve(n: int) -> list:
             for j in range(i * 2, len(arr), i):
                 arr[j] = False
     return arr
+
+
+def prime_list(upper_limit: int) -> list:  # used in problem 12
+    res = []
+    sieve_list = sieve(upper_limit)
+    for idx in range(len(sieve_list)):
+        if sieve_list[idx]:
+            res.append(idx)
+    return res
 
 
 def my_sum(a, b):
