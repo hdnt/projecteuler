@@ -8,4 +8,5 @@ def solve(n, a, b):
     return res_a + res_b - res_ab
 
 
-print(solve(999, 3, 5))
+if __name__ == "__main__":
+    print(solve(999, 3, 5))

@@ -20,9 +20,10 @@ def calc(n):
     return table[n]
 
 
-solve(MAX_NUMBER)
-ans = 1
-for idx in range(1, MAX_NUMBER + 1):
-    if table[idx] >= table[ans]:
-        ans = idx
-print(ans)
+if __name__ == "__main__":
+    solve(MAX_NUMBER)
+    ans = 1
+    for idx in range(1, MAX_NUMBER + 1):
+        if table[idx] >= table[ans]:
+            ans = idx
+    print(ans)

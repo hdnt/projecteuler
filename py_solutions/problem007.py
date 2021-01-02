@@ -12,4 +12,5 @@ def solve():
         i += 1
 
 
-print(solve())
+if __name__ == "__main__":
+    print(solve())

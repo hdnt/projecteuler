@@ -19,10 +19,11 @@ def solve(max_factors):
     return res
 
 
-ans = solve(1000)
-target = 500
-num = 10**10
-for facs in ans.keys():
-    if facs > target:
-        num = min(num, ans[facs])
-print(num)
+if __name__ == "__main__":
+    ans = solve(1000)
+    target = 500
+    num = 10**10
+    for facs in ans.keys():
+        if facs > target:
+            num = min(num, ans[facs])
+    print(num)

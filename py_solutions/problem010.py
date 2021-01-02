@@ -9,4 +9,5 @@ def solve(n):
     return res
 
 
-print(solve(2*10**6))
+if __name__ == "__main__":
+    print(solve(2*10**6))

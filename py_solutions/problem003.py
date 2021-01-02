@@ -15,4 +15,5 @@ def solve(n):
     return n
 
 
-print(solve(600851475143))
+if __name__ == "__main__":
+    print(solve(600851475143))

@@ -16,4 +16,5 @@ def solve():
     return res
 
 
-print(solve())
+if __name__ == "__main__":
+    print(solve())

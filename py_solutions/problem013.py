@@ -6,4 +6,5 @@ def solve():
     print(str(res)[:10])
 
 
-solve()
+if __name__ == "__main__":
+    solve()

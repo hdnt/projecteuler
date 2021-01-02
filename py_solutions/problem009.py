@@ -26,4 +26,5 @@ def solve(n):
     print(max(d[n]))
 
 
-solve(1000)
+if __name__ == "__main__":
+    solve(1000)
