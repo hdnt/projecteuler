@@ -1,13 +1,5 @@
 import math
-
-
-def prime_factors(n: int, prime_lst: list) -> dict:
-    res = {}
-    for prime in prime_lst:
-        while n % prime == 0:
-            res[prime] = res[prime] + 1 if prime in res else 1
-            n //= prime
-    return res
+import itertools
 
 
 def sieve(n: int) -> list:
@@ -20,13 +12,51 @@ def sieve(n: int) -> list:
     return arr
 
 
-def prime_list(upper_limit: int) -> list:  # used in problem 12
+def prime_list(upper_limit: int) -> list:
     res = []
     sieve_list = sieve(upper_limit)
     for idx in range(len(sieve_list)):
         if sieve_list[idx]:
             res.append(idx)
     return res
+
+
+def prime_factors(n: int, prime_lst: list) -> dict:
+    res = {}
+    idx = 0
+    while n > 1 and prime_lst[idx] <= n:
+        while n % prime_lst[idx] == 0:
+            res[prime_lst[idx]] = res[prime_lst[idx]] + 1 if prime_lst[idx] in res else 1
+            n //= prime_lst[idx]
+        idx += 1
+    return res
+
+
+def prime_factors_list(n: int, prime_lst: list) -> list:
+    arr = []
+    primes_dict = prime_factors(n, prime_lst)
+    for key in primes_dict.keys():
+        for i in range(primes_dict[key]):
+            arr.append(key)
+    return arr
+
+
+def divisors_list(n: int, prime_lst: list) -> list:
+    res = {1}
+    combs = itertools.combinations
+    primes = prime_factors_list(n, prime_lst)
+    for size in range(1, len(primes)):
+        for comb in combs(primes, size):
+            res.add(math.prod(comb))
+    return sorted(list(res))
+
+
+def sum_of_divisors(n: int, prime_lst: list) -> int:
+    arr = []
+    pfs = prime_factors(n, prime_lst)
+    for prime in pfs.keys():
+        arr.append((prime**(pfs[prime] + 1) - 1) // (prime - 1))
+    return math.prod(arr)
 
 
 def my_sum(a, b):
