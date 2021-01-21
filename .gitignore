@@ -1,11 +1,10 @@
 # IDE stuff
 .idea
-.vscode
 
 # Python stuff
 **/__pycache__
 venv
 
 # testing stuff
-**/_testing*
-cpp_output
+**/testing*
+run.py
